@@ -39,9 +39,9 @@ struct counting_iterator
     counting_iterator& operator-=(difference_type d) noexcept {count_-=d; return *this;}
 
     counting_iterator operator+(difference_type d) const noexcept
-    {auto tmp(*this); tmp += d; return *this;}
+    {auto tmp(*this); tmp += d; return tmp;}
     counting_iterator operator-(difference_type d) const noexcept
-    {auto tmp(*this); tmp -= d; return *this;}
+    {auto tmp(*this); tmp -= d; return tmp;}
 
     value_type operator[](difference_type d) const noexcept {return this->count_ + d;}
     value_type const& count() const noexcept {return count_;}
