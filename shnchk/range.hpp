@@ -34,7 +34,8 @@ struct iterator_range
 };
 
 template<typename Iterator>
-inline iterator_range<Iterator> make_range(Iterator first, Iterator last)
+inline iterator_range<Iterator>
+make_iterator_range(Iterator first, Iterator last) noexcept
 {
     return iterator_range<Iterator>(first, last);
 }
