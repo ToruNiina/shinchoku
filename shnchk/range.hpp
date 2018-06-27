@@ -9,7 +9,7 @@ template<typename Iterator>
 struct iterator_range
 {
     using iterator        = Iterator;
-    using traits = iterator_traits<iterator>;
+    using traits          = std::iterator_traits<iterator>;
     using value_type      = typename traits::value_type;
     using reference       = typename traits::reference;
     using pointer         = typename traits::pointer;

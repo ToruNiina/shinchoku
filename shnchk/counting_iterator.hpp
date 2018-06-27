@@ -14,7 +14,7 @@ struct counting_iterator
     using difference_type   = Difference;
     using pointer           = value_type const*;
     using reference         = value_type const&;
-    using iterator_category = std::random_access_iterator;
+    using iterator_category = std::random_access_iterator_tag;
 
     counting_iterator() = default;
     ~counting_iterator() = default;
@@ -25,10 +25,10 @@ struct counting_iterator
 
     template<typename T, typename std::enable_if<
         std::is_convertible<T, value_type>::value, std::nullptr_t>::type = nullptr>
-    counting_iterator(T&& c): count(std::forward<T>(c)){}
+    counting_iterator(T&& c): count_(std::forward<T>(c)){}
 
-    reference operator* () const noexcept {return count;}
-    pointer   operator->() const noexcept {return std::addressof(count);}
+    reference operator* () const noexcept {return count_;}
+    pointer   operator->() const noexcept {return std::addressof(count_);}
 
     counting_iterator& operator++()    noexcept {++count_; return *this;}
     counting_iterator& operator--()    noexcept {--count_; return *this;}
